@@ -1,0 +1,280 @@
+"use client";
+ import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import { circle } from "../svg/dummy";
+const ScrollableSection = () => {
+  const content = [
+    <div className="flex  justify-between ">
+      <div className=" grid gap-">
+        <div className="flex items-center gap-2">
+          {circle}
+          <p className="font-bold leading-5 text-[40px]">آکادمی</p>
+        </div>
+        <div className="px-10 grid ">
+          <p className="font-bold leading-5 text-2xl">
+            آموزش‌های کاربردی و گام‌به‌گام برای حرفه‌ای شدن
+          </p>{" "}
+          <ul className="grid gap-3">
+            <li className="font-bold leading-5 text-2xl flex gap-1">•    
+              {"    "}
+              دوره‌های جامع ۰ تا ۱۰۰ معامله‌گری
+            </li>
+            <li className="font-bold leading-5 text-2xl flex gap-1">•
+              {" "}
+              ویدیوها و مقالات آموزشی رایگان
+            </li>
+            <li className="font-bold leading-5 text-2xl flex gap-1">•
+              {" "}
+              معرفی ابزارهای یادگیری حرفه‌ای
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="">
+        {" "}
+        <Image alt="" width={560} height={490} src="/images/home/scrollBar/Group1.png"></Image>
+      </div>
+    </div>,
+    <div className="flex  justify-between "><div className="">
+        {" "}
+        <Image alt="" width={560} height={490} src="/images/home/scrollBar/Group2.png"></Image>
+      </div>
+      <div className=" grid gap-">
+        <div className="flex items-center gap-2">
+          {circle}
+          <p className="font-bold leading-5 text-[40px]">آکادمی</p>
+        </div>
+        <div className="px-10 grid ">
+          <p className="font-bold leading-5 text-2xl">
+            آموزش‌های کاربردی و گام‌به‌گام برای حرفه‌ای شدن
+          </p>{" "}
+          <ul className="grid gap-3">
+            <li className="font-bold leading-5 text-2xl flex gap-1">•    
+              {"    "}
+              دوره‌های جامع ۰ تا ۱۰۰ معامله‌گری
+            </li>
+            <li className="font-bold leading-5 text-2xl flex gap-1">•
+              {" "}
+              ویدیوها و مقالات آموزشی رایگان
+            </li>
+            <li className="font-bold leading-5 text-2xl flex gap-1">•
+              {" "}
+              معرفی ابزارهای یادگیری حرفه‌ای
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+    </div>,
+    <div className="flex  justify-between ">
+      <div className=" grid gap-">
+        <div className="flex items-center gap-2">
+          {circle}
+          <p className="font-bold leading-5 text-[40px]">آکادمی</p>
+        </div>
+        <div className="px-10 grid ">
+          <p className="font-bold leading-5 text-2xl">
+            آموزش‌های کاربردی و گام‌به‌گام برای حرفه‌ای شدن
+          </p>{" "}
+          <ul className="grid gap-3">
+            <li className="font-bold leading-5 text-2xl flex gap-1">•    
+              {"    "}
+              دوره‌های جامع ۰ تا ۱۰۰ معامله‌گری
+            </li>
+            <li className="font-bold leading-5 text-2xl flex gap-1">•
+              {" "}
+              ویدیوها و مقالات آموزشی رایگان
+            </li>
+            <li className="font-bold leading-5 text-2xl flex gap-1">•
+              {" "}
+              معرفی ابزارهای یادگیری حرفه‌ای
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="">
+        {" "}
+        <Image alt="" width={560} height={490} src="/images/home/scrollBar/Group3.png"></Image>
+      </div>
+    </div>,
+    <div className="flex  justify-between ">  <div className="">
+    {" "}
+    <Image alt="" width={560} height={490} src="/images/home/scrollBar/Group1.png"></Image>
+  </div>
+      <div className=" grid gap-">
+        <div className="flex items-center gap-2">
+          {circle}
+          <p className="font-bold leading-5 text-[40px]">آکادمی</p>
+        </div>
+        <div className="px-10 grid ">
+          <p className="font-bold leading-5 text-2xl">
+            آموزش‌های کاربردی و گام‌به‌گام برای حرفه‌ای شدن
+          </p>{" "}
+          <ul className="grid gap-3">
+            <li className="font-bold leading-5 text-2xl flex gap-1">•    
+              {"    "}
+              دوره‌های جامع ۰ تا ۱۰۰ معامله‌گری
+            </li>
+            <li className="font-bold leading-5 text-2xl flex gap-1">•
+              {" "}
+              ویدیوها و مقالات آموزشی رایگان
+            </li>
+            <li className="font-bold leading-5 text-2xl flex gap-1">•
+              {" "}
+              معرفی ابزارهای یادگیری حرفه‌ای
+            </li>
+          </ul>
+        </div>
+      </div>
+    
+    </div>,
+ 
+  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  const [isLocked, setIsLocked] = useState(false);
+  const [isInside, setIsInside] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = (e) => {
+      if (!isInside) return; // اگه بیرون محتوا باشیم، اسکرول عادی صفحه فعال باشه
+
+      if (currentIndex === 0 && e.deltaY < 0) {
+        setIsInside(false); // اگه روی محتوا باشیم و به بالا اسکرول کنیم، صفحه آزاد بشه
+        return;
+      }
+
+      if (currentIndex === content.length - 1 && e.deltaY > 0) {
+        setIsInside(false); // اگه روی آخرین محتوا باشیم و به پایین اسکرول کنیم، صفحه آزاد بشه
+        return;
+      }
+
+      e.preventDefault(); // جلوگیری از اسکرول پیش‌فرض
+
+      if (isLocked) return;
+
+      if (e.deltaY > 0 && currentIndex < content.length - 1) {
+        setCurrentIndex((prev) => prev + 1);
+        setIsLocked(true);
+      } else if (e.deltaY < 0 && currentIndex > 0) {
+        setCurrentIndex((prev) => prev - 1);
+        setIsLocked(true);
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+    };
+  }, [currentIndex, isLocked, isInside]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLocked(false);
+    }, 400); // جلوگیری از اسکرول سریع
+
+    return () => clearTimeout(timeout);
+  }, [currentIndex]);
+  const handleMouseEnter = () => {
+    setIsInside(true)
+        if (!containerRef.current) return;
+        window.scrollTo({
+          top: containerRef.current.offsetTop - 100, // ۲۰۰ پیکسل فاصله از بالا
+          behavior: "smooth",
+        });
+      };
+  return (
+    <div className="h-screen overflow-auto">
+      <div className="h-screen flex items-center justify-center p-[6%]">
+        <div
+          ref={containerRef}
+          className="w-4/4  h-[100vh] overflow-hidden relative p-8"
+          onMouseEnter={handleMouseEnter} // وقتی ماوس روی محتوا رفت، اسکرول قفل بشه
+          onMouseLeave={() => setIsInside(false)} // وقتی ماوس بیرون رفت، اسکرول آزاد بشه
+          style={{
+            backgroundImage: "url('/images/home/scrollBar/GroupBg.png')",
+            backgroundSize: "100% 100%",
+            backgroundPosition: "center",
+          }}
+        >
+          {content.map((item, index) => (
+            <div
+              key={index}
+              className={`p-8 absolute w-full h-full flex items-center justify-center transition-all duration-300 ${
+                index === currentIndex
+                  ? "opacity-100 scale-100 z-10"
+                  : "opacity-0 scale-90 z-0"
+              }`}
+              style={{ top: 0, left: 0 }}
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ScrollableSection;
+// "use client";
+
+// const ScrollableSection = () => {
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const containerRef = useRef(null);
+
+//   useEffect(() => {
+//     if (typeof window !== "undefined" && containerRef.current) {
+//       console.log("Ref is set:", containerRef.current);
+//     }
+//   }, []);
+//   const handleMouseEnter = () => {
+//     if (!containerRef.current) return;
+//     window.scrollTo({
+//       top: containerRef.current.offsetTop - 100, // ۲۰۰ پیکسل فاصله از بالا
+//       behavior: "smooth",
+//     });
+//   };
+//   return (
+//     <div className="h-screen overflow-auto ">
+//       <div className="h-screen flex items-center justify-center">
+//         <div
+//           ref={containerRef}
+//           className="w-full h-[90vh] overflow-hidden relative p-8"
+//           onMouseEnter={handleMouseEnter}
+//           style={{
+//             backgroundImage: "url('/images/home/scrollBar/GroupBg.png')",
+//             backgroundSize: "100% 100%",
+//             backgroundPosition: "center",
+//           }}
+//         >
+//           <div className="flex justify-between">
+//             <div className="grid">
+//               <div className="flex items-center gap-2">
+//                 {circle}
+//                 <p className="font-bold leading-5 text-[40px]">آکادمی</p>
+//               </div>
+//               <div className="px-10 grid">
+//                 <p className="font-bold leading-5 text-2xl">
+//                   آموزش‌های کاربردی و گام‌به‌گام برای حرفه‌ای شدن
+//                 </p>
+//               </div>
+//             </div>
+//             <div>
+//               <Image
+//                 alt=""
+//                 width={560}
+//                 height={490}
+//                 src="/images/home/scrollBar/Group1.png"
+//               />
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ScrollableSection;
