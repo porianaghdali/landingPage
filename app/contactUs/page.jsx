@@ -2,12 +2,14 @@
 
 import Header from "./sections/header/header"
 import Communication from "./sections/communication/communication"
+import Questions from "./sections/questions/questions"
 
  const ContactUs=()=>{
     return(
         <div className="px-[6%]" >
         <Header/>
         <Communication/>
+        <Questions/>
         </div>
     )
  }

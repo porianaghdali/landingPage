@@ -16,10 +16,10 @@ export default function RootLayout({
   return (
     <html dir="rtl" lang="fa">
       <body className="">
-        <div className="   relative">
+        <div className="relative">
           <Header />
         </div>
-        <div className="pt-20 ">{children}</div>
+        <div className="pt-20">{children}</div>
         <Footer />
       </body>
     </html>

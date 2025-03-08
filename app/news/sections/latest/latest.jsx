@@ -1,37 +1,40 @@
 import LatestCard from "../../components/latestCard";
 import { loading } from "../../svg";
-
-const Latest = () => {
-  const lastNews = [
-    {
-      title: "عنوان خبر ",
-      date: "1403",
-      view: "145",
-      description:
-        "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است ",
-    },
-    {
-      title: "عنوان خبر ",
-      date: "1403",
-      view: "145",
-      description:
-        "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است ",
-    },
-    {
-      title: "عنوان خبر ",
-      date: "1403",
-      view: "145",
-      description:
-        "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است ",
-    },
-    {
-      title: "عنوان خبر ",
-      date: "1403",
-      view: "145",
-      description:
-        "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است ",
-    },
-  ];
+import moment from "moment-jalaali";
+const Latest = ({ posts }) => {
+  const convertToJalali = (date) => {
+    return moment(date).format("jYYYY/jMM/jDD");
+  };
+  // const lastNews = [
+  //   {
+  //     title: "عنوان خبر ",
+  //     date: "1403",
+  //     view: "145",
+  //     description:
+  //       "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است ",
+  //   },
+  //   {
+  //     title: "عنوان خبر ",
+  //     date: "1403",
+  //     view: "145",
+  //     description:
+  //       "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است ",
+  //   },
+  //   {
+  //     title: "عنوان خبر ",
+  //     date: "1403",
+  //     view: "145",
+  //     description:
+  //       "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است ",
+  //   },
+  //   {
+  //     title: "عنوان خبر ",
+  //     date: "1403",
+  //     view: "145",
+  //     description:
+  //       "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است ",
+  //   },
+  // ];
   return (
     <>
       <div className=" grid gap-4">
@@ -40,14 +43,14 @@ const Latest = () => {
         </div>
 
         <div className=" grid grid-cols-4 gap-8">
-          {lastNews.map((item, key) => {
+          {posts.map((item, key) => {
             return (
-              <div key={key} className=" ">
+              <div key={key} className="">
                 <LatestCard
-                  title={item.title}
-                  date={item.date}
-                  description={item.description}
-                  view={item.view}
+                  title={item.title.rendered}
+                  date={convertToJalali(item.date)}
+                  description={item.excerpt.rendered}
+                  // view={item.view}
                 />
               </div>
             );
@@ -64,4 +67,4 @@ const Latest = () => {
     </>
   );
 };
-export default Latest;
+export default Latest
