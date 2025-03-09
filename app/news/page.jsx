@@ -18,6 +18,7 @@ const News = async () => {
   });
 
   const posts = await response.data;
+  if (!posts){return(<p>loading...</p>)}
   return (
     <>
       <div className="px-[6%]">

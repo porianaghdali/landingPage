@@ -13,10 +13,9 @@ const Header=()=>{
           className=" h-60  p-12 mb-10"
         >
           <h1 className=" text-[#EDECF4] font-semibold text-5xl leading-[75px]">
-          تماس با ما
-          </h1>
+          بلاگ          </h1>
           <p className=" text-[#EDECF4] font-medium leading-[50px] text-3xl">
-          "ما همیشه یک پیام یا تماس با شما فاصله داریم!"          </p>
+          "مطالعه کن، معامله کن، موفق شو!"        </p>
         </div>
         </>
     )

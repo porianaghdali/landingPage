@@ -68,11 +68,14 @@ export const Communication = () => {
           <div className="flex gap-4">
             <div>
               <div className="grid gap-1">
-                <label htmlFor="name">* نام و نام خانوادگی</label>
+                <label htmlFor="name">
+                  <span className="text-[#8658D7]">*</span> نام و نام خانوادگی
+                </label>
                 <input
-                style={
-                  {boxShadow: "0px 1px 2px 0px var(--Colors-Effects-Shadows-shadow-xs, rgba(10, 13, 18, 0.05))"}
-                }
+                  style={{
+                    boxShadow:
+                      "0px 1px 2px 0px var(--Colors-Effects-Shadows-shadow-xs, rgba(10, 13, 18, 0.05))",
+                  }}
                   placeholder="نام و نام خانوادگی خود را وارد نمایید"
                   className="px-3 w-full py-2 rounded-lg border-[1px] border-[#D5D7DA] outline-none"
                   type="text"
@@ -82,7 +85,9 @@ export const Communication = () => {
             </div>
             <div>
               <div className="grid gap-1">
-                <label htmlFor="name">* ایمیل </label>
+                <label htmlFor="name">
+                  <span className="text-[#8658D7]">*</span> ایمیل{" "}
+                </label>
                 <input
                   placeholder="olivia@untitledui.com"
                   className="px-3 py-2 rounded-lg border-[1px] w-full border-[#D5D7DA] outline-none"
@@ -91,27 +96,31 @@ export const Communication = () => {
                 />
               </div>
             </div>
-            {/* <p className="text-2xl text-[#414651]">نشانی حسنیکال: مرزداران -پلاک 463</p>{" "} */}
           </div>
-          <div className="">
-            <label htmlFor="description">* متن پیام</label>
+          <div className="grid gap-1">
+            <label htmlFor="description">
+              <span className="text-[#8658D7]">*</span> متن پیام
+            </label>
             <textarea
               className="px-3 w-full py-2 rounded-lg border-[1px] h-[208px] border-[#D5D7DA] outline-none mb-8"
-              style={
-                {resize:"none"}
-              }
+              style={{ resize: "none" }}
               placeholder="توضیحات را وارد کنید..."
               name=""
               id="description"
             ></textarea>
-            <button className="p-3 bg-[#8658D7] text-white text-[16px] font-semibold w-full text-center  rounded-lg">
-            ارسال پیام
+            <button
+              style={{
+                borderColor: "rgba(255, 255, 255, 0.12)",
+                boxShadow:
+                  "0px 0px 0px 1px var(--Colors-Effects-Shadows-shadow-skeumorphic-inner-border, rgba(10, 13, 18, 0.18)) inset, 0px -2px 0px 0px var(--Colors-Effects-Shadows-shadow-skeumorphic-inner, rgba(10, 13, 18, 0.05)) inset, 0px 1px 2px 0px var(--Colors-Effects-Shadows-shadow-xs, rgba(10, 13, 18, 0.05))",
+              }}
+              className="p-3 bg-[#8658D7] text-white text-[16px] font-semibold w-full text-center  rounded-lg border-[2px] "
+            >
+              ارسال پیام
             </button>
           </div>
         </div>
       </div>
-      
-
     </div>
   );
 };
